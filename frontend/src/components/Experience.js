@@ -10,60 +10,29 @@ import {
   Briefcase,
   GraduationCap
 } from "lucide-react";
+import { experiences } from "../data/mock.js";
 
 const Experience = () => {
-  const experiences = [
-    {
-      title: "Head of Course Representatives",
-      organization: "University of Surrey Students' Union",
-      period: "Current",
-      icon: Crown,
-      color: "from-amber-400 to-amber-600",
-      description: "Leading a team of 30 representatives, advocating for the academic interests of over 1,200 students.",
-      highlights: [
-        "Organize regular meetings with university leadership",
-        "Enhanced communication between students and faculty",
-        "Successfully increased student satisfaction within the department",
-        "Developed strong leadership and organizational skills"
-      ]
-    },
-    {
-      title: "Bright Network Internship Experience",
-      organization: "Technology & Engineering Programme",
-      period: "July 14-17, 2025",
-      icon: Award,
-      color: "from-blue-400 to-blue-600",
-      description: "4-day virtual internship programme with industry leaders including Google, Cisco, Lloyds Banking Group, and MBDA.",
-      highlights: [
-        "Interactive workshops on AI applications and design thinking",
-        "Completed sector skills project with peer feedback",
-        "Panel discussions on social mobility and DEI in tech",
-        "Networking with professionals from top firms",
-        "Received certificate of completion"
-      ],
-      skills: [
-        "Problem-solving & critical thinking",
-        "Project management & agile concepts", 
-        "AI & technology awareness",
-        "Professional networking"
-      ]
-    },
-    {
-      title: "Vice President",
-      organization: "Computer Science Society - University of Surrey",
-      period: "Former",
-      icon: GraduationCap,
-      color: "from-purple-400 to-purple-600",
-      description: "Managed a committee of 10 members, organizing technical events and fostering student engagement.",
-      highlights: [
-        "Planned and executed hackathons and game jams",
-        "Organized guest talks with industry professionals",
-        "Ensured maximum student attendance at events",
-        "Managed sponsorship opportunities with companies",
-        "Coordinated with senior academics and department representatives"
-      ]
+  
+  // 2. THE LOOKUP MAP
+  // This translates the "type" string from your data into an actual Icon Component.
+  const iconMap = {
+    leadership: Crown,
+    internship: Award,
+    // fallback icon in case the type doesn't match
+    default: Briefcase 
+  };
+
+  // 3. COLOR HELPER (Optional)
+  // Since mock.js doesn't have colors, we can assign them based on the type
+  const getColor = (type) => {
+    switch(type) {
+      case 'leadership': return "from-amber-400 to-amber-600";
+      case 'internship': return "from-blue-400 to-blue-600";
+      default: return "from-purple-400 to-purple-600";
     }
-  ];
+  };
+
 
   const containerVariants = {
     hidden: { opacity: 0 },

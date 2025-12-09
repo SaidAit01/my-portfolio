@@ -13,48 +13,32 @@ import {
   Monitor
 } from "lucide-react";
 
+// 1. IMPORT DATA
+// We rename 'skills' to 'skillsData' so we don't confuse it with the component name
+import { skills as skillsData } from "../data/mock.js";
+
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Programming Languages",
-      icon: Code2,
-      skills: [
-        { name: "Python", level: 90, icon: "🐍" },
-        { name: "JavaScript", level: 85, icon: "⚡" },
-        { name: "Java", level: 80, icon: "☕" },
-        { name: "C++", level: 75, icon: "⚙️" },
-        { name: "MATLAB", level: 70, icon: "📊" },
-      ]
-    },
-    {
-      title: "Web Technologies",
-      icon: Globe,
-      skills: [
-        { name: "React", level: 85, icon: "⚛️" },
-        { name: "HTML5", level: 90, icon: "🌐" },
-        { name: "Django", level: 80, icon: "🎯" },
-        { name: "Bootstrap", level: 75, icon: "🎨" },
-        { name: "REST APIs", level: 85, icon: "🔗" },
-      ]
-    },
-    {
-      title: "Database & Tools",
-      icon: Database,
-      skills: [
-        { name: "MySQL", level: 80, icon: "🗄️" },
-        { name: "Git", level: 85, icon: "📱" },
-        { name: "Microsoft Office 365", level: 90, icon: "📄" },
-      ]
-    }
-  ];
+  
+  // 2. TRANSFORM DATA
+  // Convert the object from mock.js into an array we can loop through
+  const skillCategories = Object.entries(skillsData).map(([categoryName, skillsList]) => {
+    // Choose an icon based on the category name
+    let Icon = Code2;
+    if (categoryName.includes("Web")) Icon = Globe;
+    if (categoryName.includes("Database")) Icon = Database;
+
+    return {
+      title: categoryName,
+      icon: Icon,
+      skills: skillsList
+    };
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+      transition: { staggerChildren: 0.2 }
     }
   };
 
@@ -63,9 +47,7 @@ const Skills = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6
-      }
+      transition: { duration: 0.6 }
     }
   };
 
@@ -92,6 +74,7 @@ const Skills = () => {
           animate="visible"
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
+          {/* 3. MAP OVER THE TRANSFORMED CATEGORIES */}
           {skillCategories.map((category, categoryIndex) => {
             const CategoryIcon = category.icon;
             return (
@@ -151,7 +134,7 @@ const Skills = () => {
           })}
         </motion.div>
 
-        {/* Floating Tech Icons Background */}
+        {/* Floating Background Icons */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {[Terminal, FileCode, Server, Layers, GitBranch, Settings, Monitor].map((Icon, index) => (
             <motion.div

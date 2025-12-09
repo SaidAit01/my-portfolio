@@ -15,87 +15,28 @@ import {
   Trophy
 } from "lucide-react";
 
+// 1. IMPORT DATA
+// Using "../mock" assumes mock.js is in the 'src' folder
+import { projects } from "../data/mock.js";
+
 const Projects = () => {
-  const projects = [
-    {
-      title: "AI-Powered E-Learning Platform",
-      subtitle: "Microsoft Hackathon - 4th Place",
-      period: "2024",
-      icon: Brain,
-      color: "from-blue-400 to-blue-600",
-      description: "Led a team of 5 to develop an innovative e-learning platform for neurodiverse students using Python and Azure OpenAI Service.",
-      achievements: [
-        "Secured 4th place among 100+ developers",
-        "Personalised explanations with popular culture references",
-        "Enhanced accessibility in education",
-        "Team leadership and project management"
-      ],
-      technologies: ["Python", "Azure OpenAI", "Figma", "Machine Learning"],
-      links: {
-        github: "https://github.com/raaghavkk/Neurodivers-AI"
-      }
-    },
-    {
-      title: "University Moderating System",
-      subtitle: "University Hackathon Project",
-      period: "2024",
-      icon: Shield,
-      color: "from-green-400 to-green-600",
-      description: "Built a comprehensive web application in 72 hours for student project management and academic evaluation with a team of 4.",
-      achievements: [
-        "Role-based access for conveners and academics",
-        "Project assignment and evaluation system",
-        "Workflow automation implementation",
-        "Bug diagnosis and deployment resolution"
-      ],
-      technologies: ["Python", "Django", "React", "Tailwind CSS", "MongoDB", "Git"],
-      links: {
-        github: "https://github.com/devdyanmos-surrey/website"
-      }
-    },
-    {
-      title: "DataVizor",
-      subtitle: "AI-Powered Privacy Policy Analyzer",
-      period: "2025",
-      icon: Database,
-      color: "from-purple-400 to-purple-600",
-      description: "Full-stack web application that analyzes and summarizes privacy policies in real-time using Gemini AI API.",
-      achievements: [
-        "Real-time privacy policy analysis",
-        "Accessible UI with dark/light mode",
-        "Text-to-speech implementation",
-        "GDPR risk scoring system"
-      ],
-      technologies: ["Next.js", "PostgreSQL", "Prisma", "Tailwind CSS", "Gemini AI"],
-      links: {}
-    },
-    {
-      title: "My Music Maestro",
-      subtitle: "Label Music Manager",
-      period: "2024",
-      icon: Music,
-      color: "from-pink-400 to-pink-600",
-      description: "Web application designed to manage albums for artists, allowing creation, editing, and removal of albums with intuitive interface.",
-      achievements: [
-        "Complete CRUD operations for albums",
-        "Artist management system",
-        "Responsive design implementation",
-        "User-friendly interface design"
-      ],
-      technologies: ["Django", "React", "Python", "CSS", "SQLite"],
-      links: {
-        github: "https://github.com/SaidAit01/Album-Music-Manager"
-      }
-    }
-  ];
+  
+  // 2. ICON MAP (Optional but good for flexibility)
+  // If you want specific icons for specific project types
+  const getIconForProject = (title) => {
+    if (title.includes("Music")) return Music;
+    if (title.includes("Privacy")) return Shield;
+    if (title.includes("AI")) return Brain;
+    if (title.includes("University")) return Database;
+    return Code; // Default icon
+  };
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+      transition: { staggerChildren: 0.2 }
     }
   };
 
@@ -104,9 +45,7 @@ const Projects = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8
-      }
+      transition: { duration: 0.8 }
     }
   };
 
@@ -133,22 +72,29 @@ const Projects = () => {
           animate="visible"
           className="grid md:grid-cols-2 gap-8"
         >
+          {/* 3. MAP OVER DATA */}
           {projects.map((project, index) => {
-            const Icon = project.icon;
+            // Determine Icon dynamically
+            const Icon = getIconForProject(project.title);
+            
+            // Determine Color based on index or type (Optional logic)
+            // You can also add a 'color' field to mock.js to make this explicit
+            const colorClass = index % 2 === 0 ? "from-blue-400 to-blue-600" : "from-purple-400 to-purple-600";
+
             return (
               <motion.div
                 key={index}
                 variants={itemVariants}
                 className="bg-slate-800/50 backdrop-blur-lg border border-amber-400/20 rounded-2xl overflow-hidden hover:border-amber-400/40 transition-all duration-300 group"
               >
-                {/* Project Header */}
                 <div className="p-6 border-b border-slate-700/50">
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-r ${project.color} bg-opacity-20`}>
+                    <div className={`p-3 rounded-xl bg-gradient-to-r ${colorClass} bg-opacity-20`}>
                       <Icon size={28} className="text-white" />
                     </div>
                     <div className="flex space-x-2">
-                      {project.links.github && (
+                      {/* Check if links exist before rendering */}
+                      {project.links && project.links.github && (
                         <motion.a
                           href={project.links.github}
                           target="_blank"
@@ -160,6 +106,17 @@ const Projects = () => {
                           <Github size={18} className="text-gray-400 hover:text-amber-400" />
                         </motion.a>
                       )}
+                      {project.links && project.links.demo && (
+                        <motion.a
+                          href={project.links.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-slate-700/50 rounded-lg hover:bg-amber-400/20 transition-colors"
+                          whileHover={{ scale: 1.1 }}
+                        >
+                          <ExternalLink size={18} className="text-gray-400 hover:text-amber-400" />
+                        </motion.a>
+                      )}
                     </div>
                   </div>
                   
@@ -167,9 +124,7 @@ const Projects = () => {
                     {project.title}
                   </h3>
                   <div className="flex items-center text-amber-400 mb-2">
-                    {project.title.includes("Microsoft") && <Trophy size={16} className="mr-2" />}
-                    {project.title.includes("University") && <Users size={16} className="mr-2" />}
-                    {!project.title.includes("Microsoft") && !project.title.includes("University") && <Code size={16} className="mr-2" />}
+                     <Code size={16} className="mr-2" />
                     <span className="font-semibold">{project.subtitle}</span>
                   </div>
                   <div className="flex items-center text-gray-400 mb-4">
@@ -178,13 +133,11 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* Project Content */}
                 <div className="p-6">
                   <p className="text-gray-300 leading-relaxed mb-6">
                     {project.description}
                   </p>
 
-                  {/* Key Achievements */}
                   <div className="mb-6">
                     <h4 className="text-amber-400 font-semibold mb-3 flex items-center">
                       <Award size={18} className="mr-2" />
@@ -206,7 +159,6 @@ const Projects = () => {
                     </ul>
                   </div>
 
-                  {/* Technologies */}
                   <div>
                     <h4 className="text-amber-400 font-semibold mb-3 flex items-center">
                       <Code size={18} className="mr-2" />
