@@ -18,6 +18,7 @@ import {
 const FloatingIcons = () => {
   const icons = [
     { Icon: Code, delay: 0, x: "10%", y: "20%" },
+    
     { Icon: Database, delay: 0.5, x: "80%", y: "15%" },
     { Icon: Smartphone, delay: 1, x: "15%", y: "70%" },
     { Icon: Cloud, delay: 1.5, x: "85%", y: "80%" },
