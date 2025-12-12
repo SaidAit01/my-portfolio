@@ -4,27 +4,28 @@ import {
   Users, 
   Award, 
   Calendar,
-  MapPin,
-  ExternalLink,
   Crown,
   Briefcase,
   GraduationCap
 } from "lucide-react";
+
+// IMPORT DATA
+// Note: This assumes mock.js is in the 'src' folder (one level up)
 import { experiences } from "../data/mock.js";
 
 const Experience = () => {
   
-  // 2. THE LOOKUP MAP
-  // This translates the "type" string from your data into an actual Icon Component.
+  // 1. ICON MAP
+  // Translates the "type" string from your data into an actual Icon Component
   const iconMap = {
     leadership: Crown,
     internship: Award,
-    // fallback icon in case the type doesn't match
-    default: Briefcase 
+    hackathon: Users,
+    default: Briefcase
   };
 
-  // 3. COLOR HELPER (Optional)
-  // Since mock.js doesn't have colors, we can assign them based on the type
+  // 2. COLOR HELPER
+  // Assigns colors based on the role type since colors aren't in mock.js
   const getColor = (type) => {
     switch(type) {
       case 'leadership': return "from-amber-400 to-amber-600";
@@ -33,14 +34,11 @@ const Experience = () => {
     }
   };
 
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.3
-      }
+      transition: { staggerChildren: 0.3 }
     }
   };
 
@@ -49,9 +47,7 @@ const Experience = () => {
     visible: {
       opacity: 1,
       x: 0,
-      transition: {
-        duration: 0.8
-      }
+      transition: { duration: 0.8 }
     }
   };
 
@@ -78,8 +74,12 @@ const Experience = () => {
           animate="visible"
           className="space-y-8"
         >
-          {experiences.map((exp, index) => {
-            const Icon = exp.icon;
+          {/* SAFETY GUARD 1: Add (experiences || []) to prevent crash if data is undefined */}
+          {(experiences || []).map((exp, index) => {
+            // Determine Icon: If type is missing, use default
+            const Icon = iconMap[exp.type] || iconMap.default;
+            const colorClass = getColor(exp.type);
+
             return (
               <motion.div
                 key={index}
@@ -88,9 +88,10 @@ const Experience = () => {
               >
                 <div className="bg-slate-800/50 backdrop-blur-lg border border-amber-400/20 rounded-2xl p-8 hover:border-amber-400/40 transition-all duration-300">
                   <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                    {/* Icon and Title Section */}
+                    
+                    {/* Left Side: Icon, Title, Date */}
                     <div className="flex items-start gap-4 lg:min-w-0 lg:flex-1">
-                      <div className={`p-4 rounded-xl bg-gradient-to-r ${exp.color} bg-opacity-20`}>
+                      <div className={`p-4 rounded-xl bg-gradient-to-r ${colorClass} bg-opacity-20`}>
                         <Icon size={32} className="text-white" />
                       </div>
                       
@@ -112,16 +113,18 @@ const Experience = () => {
                       </div>
                     </div>
 
-                    {/* Content Section */}
+                    {/* Right Side: Achievements & Skills */}
                     <div className="lg:flex-1 space-y-6">
-                      {/* Key Highlights */}
+                      
+                      {/* Key Achievements */}
                       <div>
                         <h4 className="text-amber-400 font-semibold mb-3 flex items-center">
                           <Award size={18} className="mr-2" />
                           Key Achievements
                         </h4>
                         <ul className="space-y-2">
-                          {exp.highlights.map((highlight, idx) => (
+                          {/* SAFETY GUARD 2: Check if achievements exists */}
+                          {(exp.achievements || []).map((highlight, idx) => (
                             <motion.li
                               key={idx}
                               initial={{ opacity: 0, x: 20 }}
@@ -136,7 +139,7 @@ const Experience = () => {
                         </ul>
                       </div>
 
-                      {/* Skills (if available) */}
+                      {/* Skills (Render only if they exist) */}
                       {exp.skills && (
                         <div>
                           <h4 className="text-amber-400 font-semibold mb-3 flex items-center">
@@ -144,7 +147,8 @@ const Experience = () => {
                             Skills Developed
                           </h4>
                           <div className="flex flex-wrap gap-2">
-                            {exp.skills.map((skill, idx) => (
+                            {/* SAFETY GUARD 3: Check if skills array is valid */}
+                            {(exp.skills || []).map((skill, idx) => (
                               <motion.span
                                 key={idx}
                                 initial={{ opacity: 0, scale: 0.8 }}
@@ -163,7 +167,7 @@ const Experience = () => {
                 </div>
 
                 {/* Connecting Line (except for last item) */}
-                {index < experiences.length - 1 && (
+                {index < (experiences || []).length - 1 && (
                   <div className="absolute left-8 top-full w-0.5 h-8 bg-gradient-to-b from-amber-400/50 to-transparent z-10" />
                 )}
               </motion.div>
@@ -176,3 +180,15 @@ const Experience = () => {
 };
 
 export default Experience;
+
+
+
+
+
+
+
+
+
+
+
+

@@ -12,7 +12,11 @@ import {
   Brain,
   Music,
   Shield,
-  Trophy
+  Bot, 
+  Sparkles,
+  ClipboardCheck,
+ CandlestickChart,
+ Cpu
 } from "lucide-react";
 
 // 1. IMPORT DATA
@@ -25,9 +29,12 @@ const Projects = () => {
   // If you want specific icons for specific project types
   const getIconForProject = (title) => {
     if (title.includes("Music")) return Music;
-    if (title.includes("Privacy")) return Shield;
-    if (title.includes("AI")) return Brain;
-    if (title.includes("University")) return Database;
+    if (title.includes("DataVizor")) return Shield;
+    if ( title.includes("LoRA")) return Cpu;
+    if (title.includes("University")) return ClipboardCheck;
+    if  (title.includes("E-Learning")) return Bot;
+    if (title.includes("Allocation")) return Brain;
+    if (title.includes("StockTok")) return CandlestickChart;
     return Code; // Default icon
   };
 

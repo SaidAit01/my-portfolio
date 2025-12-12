@@ -85,6 +85,69 @@ export const experiences = [
 
 export const projects = [
   {
+    title: "Metaheuristic Hyperparameter Optimisation for LoRA",
+    subtitle: "Computational Intelligence Project",
+    period: "2025",
+    type: "Machine Learning Research", 
+    description: "An automated framework for tuning Low-Rank Adaptation (LoRA) hyperparameters to fine-tune DistilBERT on the Emotion dataset. The project systematically compares swarm intelligence algorithms (PSO, GWO) against evolutionary methods (GA) and random baselines to maximise validation accuracy and generalisation.",
+    achievements: [
+      "Achieved a peak test accuracy of 90.95% using the Grey Wolf Optimizer (GWO), outperforming standard Random Search and Genetic Algorithms.",
+      "Implemented a robust multi-objective solution (NSGA-II) that successfully identified models with 50% fewer trainable parameters while maintaining competitive accuracy.",
+      "Developed a distributed experimental pipeline to evaluate 5 distinct algorithms across multiple random seeds using high-performance A100 GPUs."
+    ],
+    technologies: ["Python", "PyTorch", "Hugging Face Transformers", "PEFT (LoRA)", "DEAP", "Pandas", "Matplotlib", "Google Colab"],
+    links: {
+      github: "https://github.com/SaidAit01/COM3013-LoRA-Optimisation"
+    }
+  },
+
+  {
+  title: "StockTok: Microservices-Based Social Trading Platform",
+  subtitle: "Internet Scale systems Project)",
+  period: "2025",
+  type: "Full-Stack Microservice Architecture",
+  description: "A distributed web application enabling users to track real-time stock market data and share financial insights. The system utilizes a microservices architecture to decouple market data processing from user management and social interactions.",
+  achievements: [
+    "Developed a high-performance Market Data Microservice using Python (FastAPI) to serve historical OHLC data and complex financial fundamentals.",
+    "Engineered a robust data processing pipeline using Pandas to calculate key valuation metrics (LTM Net Debt, EV/EBITDA) and implemented Redis caching to optimize API latency.",
+    "Built a responsive Next.js (TypeScript) frontend module featuring interactive candlestick charts (Lightweight Charts) and a dynamic financial dashboard.",
+    "Integrated the Python service into a larger .NET ecosystem via a YARP (Yet Another Reverse Proxy) API Gateway, ensuring seamless routing and Auth0 security compliance."
+  ],
+  technologies: [
+    "Python", 
+    "FastAPI", 
+    "Next.js", 
+    "TypeScript", 
+    "Redis", 
+    "Pandas", 
+    "yfinance", 
+    ".NET (YARP)", 
+    "Auth0"
+  ],
+  links: {
+    "github": "https://github.com/SaidAit01/StockTok/tree/market-service" 
+  }
+},
+{
+    title: "DataVizor",
+    subtitle: "AI-Powered Privacy Policy Analyzer",
+    period: "2025", 
+    type: "web-app",
+    description: "Full-stack web application that analyzes and summarizes privacy policies in real-time using Gemini AI API.",
+    achievements: [
+      "Real-time privacy policy analysis",
+      "Accessible UI with dark/light mode",
+      "Text-to-speech implementation",
+      "GDPR risk scoring system"
+    ],
+    technologies: ["Next.js", "PostgreSQL", "Prisma", "Tailwind CSS", "Gemini AI, Docker"],
+    links: {
+      demo: "https://github.com/Group18-babylon/demo-repository",
+      github: "https://github.com/Group18-babylon/softeng-gp18"
+    }
+  },
+  
+  {
     title: "AI-Powered E-Learning Platform",
     subtitle: "Microsoft Hackathon - 4th Place",
     period: "2024",
@@ -102,9 +165,11 @@ export const projects = [
       github: "#"
     }
   },
+  
+
   {
     title: "University Moderating System", 
-    subtitle: "University Hackathon Project",
+    subtitle: "University Hackathon Project - 2nd Place",
     period: "2024",
     type: "hackathon",
     description: "Built a comprehensive web application in 72 hours for student project management and academic evaluation with a team of 4.",
@@ -119,27 +184,10 @@ export const projects = [
       github: "https://github.com/devdyanmos-surrey/website"
     }
   },
-  {
-    title: "DataVizor",
-    subtitle: "AI-Powered Privacy Policy Analyzer",
-    period: "2025", 
-    type: "web-app",
-    description: "Full-stack web application that analyzes and summarizes privacy policies in real-time using Gemini AI API.",
-    achievements: [
-      "Real-time privacy policy analysis",
-      "Accessible UI with dark/light mode",
-      "Text-to-speech implementation",
-      "GDPR risk scoring system"
-    ],
-    technologies: ["Next.js", "PostgreSQL", "Prisma", "Tailwind CSS", "Gemini AI"],
-    links: {
-      demo: "#",
-      github: "#"
-    }
-  },
+ 
   {
     title: "My Music Maestro",
-    subtitle: "Label Music Manager",
+    subtitle: "University Coursework Project",
     period: "2024",
     type: "web-app", 
     description: "Web application designed to manage albums for artists, allowing creation, editing, and removal of albums with intuitive interface.",
@@ -153,7 +201,24 @@ export const projects = [
     links: {
       github: "https://github.com/SaidAit01/Album-Music-Manager"
     }
-  }
+  },
+  {
+    title: "Intelligent Supervisor Allocation System (ISAS)",
+    subtitle: "Final Year Project",
+    period: "In Progress - 2026",
+    type: "Full-Stack AI Application",
+    description: "A full-stack, AI-powered allocation system designed to automate and optimize the complex process of matching students with supervisors based on research interests and capacity constraints.",
+    achievements: [
+      "Architected a scalable full-stack solution using Django (DRF) and React to replace manual allocation processes.",
+      "Designed a novel hybrid recommendation engine combining Sentence-BERT for semantic text analysis with explicit user preferences via a tunable weighted model.",
+      "Engineered a capacity-constrained assignment algorithm and benchmarked its performance on a synthetic dataset to scientifically evaluate and tune model weights."
+    ],
+    technologies: ["Python", "Django (DRF)", "React", "Sentence-BERT", "Pandas", "Scikit-learn"],
+    links: {
+      github: "" // Don't forget to update this link!
+    }
+  },
+  
 ];
 
 export default {
