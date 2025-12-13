@@ -90,6 +90,7 @@ The Frontend will launch at http://localhost:5173
 
 # Project Structure
 
+```bash
 my-portfolio/
 ├── backend/ # FastAPI Application
 │ ├── main.py # API Entry point
@@ -103,6 +104,7 @@ my-portfolio/
 │ │ └── App.jsx # Main Frontend Logic
 │ └── package.json # Frontend dependencies
 └── README.md # Project Documentation
+```
 
 ---
 
