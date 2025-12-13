@@ -9,23 +9,19 @@ import {
   GraduationCap
 } from "lucide-react";
 
-// IMPORT DATA
-// Note: This assumes mock.js is in the 'src' folder (one level up)
-import { experiences } from "../data/mock.js";
+import { experiences } from "../data/mock"; 
 
 const Experience = () => {
   
-  // 1. ICON MAP
-  // Translates the "type" string from your data into an actual Icon Component
+  // Icon fallback (used if no image is provided)
   const iconMap = {
     leadership: Crown,
     internship: Award,
     hackathon: Users,
+    work: Briefcase,
     default: Briefcase
   };
 
-  // 2. COLOR HELPER
-  // Assigns colors based on the role type since colors aren't in mock.js
   const getColor = (type) => {
     switch(type) {
       case 'leadership': return "from-amber-400 to-amber-600";
@@ -36,19 +32,12 @@ const Experience = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.3 }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
   };
 
   const itemVariants = {
     hidden: { opacity: 0, x: -50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8 }
-    }
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } }
   };
 
   return (
@@ -74,9 +63,8 @@ const Experience = () => {
           animate="visible"
           className="space-y-8"
         >
-          {/* SAFETY GUARD 1: Add (experiences || []) to prevent crash if data is undefined */}
           {(experiences || []).map((exp, index) => {
-            // Determine Icon: If type is missing, use default
+            // Logic: Determine Icon just in case the image fails or isn't there
             const Icon = iconMap[exp.type] || iconMap.default;
             const colorClass = getColor(exp.type);
 
@@ -89,10 +77,25 @@ const Experience = () => {
                 <div className="bg-slate-800/50 backdrop-blur-lg border border-amber-400/20 rounded-2xl p-8 hover:border-amber-400/40 transition-all duration-300">
                   <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                     
-                    {/* Left Side: Icon, Title, Date */}
+                    {/* --- IMAGE / ICON SECTION --- */}
                     <div className="flex items-start gap-4 lg:min-w-0 lg:flex-1">
-                      <div className={`p-4 rounded-xl bg-gradient-to-r ${colorClass} bg-opacity-20`}>
-                        <Icon size={32} className="text-white" />
+                      <div className={`
+                        relative w-16 h-16 rounded-xl flex items-center justify-center overflow-hidden shrink-0
+                        ${!exp.logo ? `bg-gradient-to-r ${colorClass} bg-opacity-20` : 'bg-white/5'}
+                      `}>
+                        {/* CONDITIONAL RENDERING: Check if logo exists */}
+                        {exp.logo ? (
+                          <img 
+                            src={exp.logo} 
+                            alt={`${exp.organization} logo`}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          // Fallback to Icon if no logo
+                          <div className={`p-3 rounded-xl bg-gradient-to-r ${colorClass} bg-opacity-20`}>
+                            <Icon size={32} className="text-white" />
+                          </div>
+                        )}
                       </div>
                       
                       <div className="flex-1">
@@ -116,14 +119,12 @@ const Experience = () => {
                     {/* Right Side: Achievements & Skills */}
                     <div className="lg:flex-1 space-y-6">
                       
-                      {/* Key Achievements */}
                       <div>
                         <h4 className="text-amber-400 font-semibold mb-3 flex items-center">
                           <Award size={18} className="mr-2" />
                           Key Achievements
                         </h4>
                         <ul className="space-y-2">
-                          {/* SAFETY GUARD 2: Check if achievements exists */}
                           {(exp.achievements || []).map((highlight, idx) => (
                             <motion.li
                               key={idx}
@@ -139,7 +140,6 @@ const Experience = () => {
                         </ul>
                       </div>
 
-                      {/* Skills (Render only if they exist) */}
                       {exp.skills && (
                         <div>
                           <h4 className="text-amber-400 font-semibold mb-3 flex items-center">
@@ -147,7 +147,6 @@ const Experience = () => {
                             Skills Developed
                           </h4>
                           <div className="flex flex-wrap gap-2">
-                            {/* SAFETY GUARD 3: Check if skills array is valid */}
                             {(exp.skills || []).map((skill, idx) => (
                               <motion.span
                                 key={idx}
@@ -166,7 +165,6 @@ const Experience = () => {
                   </div>
                 </div>
 
-                {/* Connecting Line (except for last item) */}
                 {index < (experiences || []).length - 1 && (
                   <div className="absolute left-8 top-full w-0.5 h-8 bg-gradient-to-b from-amber-400/50 to-transparent z-10" />
                 )}
@@ -180,15 +178,3 @@ const Experience = () => {
 };
 
 export default Experience;
-
-
-
-
-
-
-
-
-
-
-
-

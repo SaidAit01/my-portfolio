@@ -18,23 +18,32 @@ export const personalInfo = {
 
 export const skills = {
   "Programming Languages": [
-    { name: "Python", level: 90, icon: "🐍" },
+    { name: "Python", level: 95, icon: "🐍" }, // Increased confidence based on AI projects
     { name: "JavaScript", level: 85, icon: "⚡" },
+    { name: "TypeScript", level: 80, icon: "📘" }, // Added from StockTok
     { name: "Java", level: 80, icon: "☕" },
-    { name: "C++", level: 75, icon: "⚙️" },
-    { name: "MATLAB", level: 70, icon: "📊" }
+    { name: "C++", level: 75, icon: "⚙️" }
+  ],
+  "AI & Data Science": [ // NEW CATEGORY
+    { name: "PyTorch", level: 90, icon: "🔥" }, // From LoRA project
+    { name: "Hugging Face", level: 85, icon: "🤗" }, // From LoRA/NLP
+    { name: "Pandas & NumPy", level: 90, icon: "🐼" }, // From StockTok/Research
+    { name: "Scikit-learn", level: 85, icon: "🧠" }, // From ISAS
+    { name: "Generative AI APIs", level: 80, icon: "✨" } // Gemini/OpenAI
   ],
   "Web Technologies": [
-    { name: "React", level: 85, icon: "⚛️" },
-    { name: "HTML5", level: 90, icon: "🌐" },
-    { name: "Django", level: 80, icon: "🎯" },
-    { name: "Bootstrap", level: 75, icon: "🎨" },
-    { name: "REST APIs", level: 85, icon: "🔗" }
+    { name: "React & Next.js", level: 90, icon: "⚛️" }, // Combined & Updated
+    { name: "FastAPI", level: 85, icon: "🚀" }, // From StockTok
+    { name: "Django (DRF)", level: 85, icon: "🎯" }, // From ISAS
+    { name: "Tailwind CSS", level: 90, icon: "🎨" }, // From DataVizor
+    { name: "Microservices", level: 80, icon: "🏗️" } // Architecture skill
   ],
-  "Database & Tools": [
-    { name: "MySQL", level: 80, icon: "🗄️" },
-    { name: "Git", level: 85, icon: "📱" },
-    { name: "Microsoft Office 365", level: 90, icon: "📄" }
+  "DevOps & Tools": [ // RENAMED from "Database & Tools"
+    { name: "Docker", level: 80, icon: "🐳" }, // From DataVizor
+    { name: "PostgreSQL", level: 85, icon: "🐘" }, // Better than MySQL
+    { name: "Redis", level: 75, icon: "🔴" }, // From StockTok
+    { name: "Git & GitHub", level: 90, icon: "🐙" },
+    { name: "Azure / Cloud", level: 75, icon: "☁️" } // From Hackathon
   ]
 };
 
@@ -42,21 +51,24 @@ export const experiences = [
   {
     title: "Head of Course Representatives",
     organization: "University of Surrey Students' Union",
-    period: "Current",
+    period: "September 2024 - June 2025",
     type: "leadership",
+    logo: "/images/university-of-surrey-logo.jpeg",
     description: "Leading a team of 30 representatives, advocating for the academic interests of over 1,200 students.",
     achievements: [
       "Organize regular meetings with university leadership",
       "Enhanced communication between students and faculty", 
       "Successfully increased student satisfaction within the department",
       "Developed strong leadership and organizational skills"
-    ]
+    ],
+    skills: ["Team Leadership", "Stakeholder Management", "Public Speaking", "Conflict Resolution", "Strategic Communication"]
   },
   {
     title: "Bright Network Internship Experience",
     organization: "Technology & Engineering Programme", 
     period: "July 14-17, 2025",
     type: "internship",
+    logo: "/images/bright_network_logo.jpeg",
     description: "4-day virtual internship programme with industry leaders including Google, Cisco, Lloyds Banking Group, and MBDA.",
     achievements: [
       "Interactive workshops on AI applications and design thinking",
@@ -70,8 +82,9 @@ export const experiences = [
   {
     title: "Vice President",
     organization: "Computer Science Society - University of Surrey",
-    period: "Former",
+    period: "September 2024 - June 2025",
     type: "leadership",
+    logo: "/images/compsoc.jpeg", 
     description: "Managed a committee of 10 members, organizing technical events and fostering student engagement.",
     achievements: [
       "Planned and executed hackathons and game jams",
@@ -79,7 +92,21 @@ export const experiences = [
       "Ensured maximum student attendance at events",
       "Managed sponsorship opportunities with companies",
       "Coordinated with senior academics and department representatives"
-    ]
+    ],
+    skills: ["Event Management", "Team Coordination", "Budget Planning", "Leadership"]
+  },
+  {
+    title: "Barista",
+    organization: "Costa Coffee UK",
+    period: "May 2024 - September 2024", 
+    type: "part-time",
+    logo: "/images/costa-coffee-logo.jpeg",
+    description: "Delivered friendly and efficient customer service, ensuring a welcoming atmosphere for a diverse range of customers.",
+    achievements: [
+      "Worked closely with team members during high-pressure periods to maintain fast, consistent service and smooth operations.",
+      "Recognised with multiple ‘Star of the Week’ awards for excellent teamwork, initiative, and customer satisfaction."
+    ],
+    skills: ["Customer Service", "Time Management", "Teamwork", "High-Pressure Adaptability", "Communication"]
   }
 ];
 
