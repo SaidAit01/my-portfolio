@@ -90,6 +90,8 @@ The Frontend will launch at http://localhost:5173
 
 # Project Structure
 
+git
+
 ```bash
 my-portfolio/
 ├── backend/ # FastAPI Application
