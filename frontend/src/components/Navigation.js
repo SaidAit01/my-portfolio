@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Home, Code, Briefcase, FolderOpen, Mail, Menu, X } from "lucide-react";
+import { Home, Code, Briefcase, FolderOpen, Mail, Menu, X, GraduationCap} from "lucide-react";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,9 +10,11 @@ const Navigation = () => {
   const navItems = [
     { name: "Home", path: "/", icon: Home },
     { name: "Skills", path: "/skills", icon: Code },
+    { name: "Education", path: "/education", icon: GraduationCap },
     { name: "Experience", path: "/experience", icon: Briefcase },
     { name: "Projects", path: "/projects", icon: FolderOpen },
     { name: "Contact", path: "/contact", icon: Mail },
+    { name: "Resume", path: "/resume", icon: Briefcase },
   ];
 
   return (

@@ -25,11 +25,13 @@ export const skills = {
     { name: "C++", level: 75, icon: "⚙️" }
   ],
   "AI & Data Science": [ // NEW CATEGORY
-    { name: "PyTorch", level: 90, icon: "🔥" }, // From LoRA project
-    { name: "Hugging Face", level: 85, icon: "🤗" }, // From LoRA/NLP
-    { name: "Pandas & NumPy", level: 90, icon: "🐼" }, // From StockTok/Research
-    { name: "Scikit-learn", level: 85, icon: "🧠" }, // From ISAS
-    { name: "Generative AI APIs", level: 80, icon: "✨" } // Gemini/OpenAI
+    { name: "PyTorch", icon: "🔥" }, // From LoRA project
+    { name: "Hugging Face", icon: "🤗" }, // From LoRA/NLP
+    { name: "Pandas & NumPy", icon: "🐼" }, // From StockTok/Research
+    { name: "Scikit-learn", icon: "🧠" }, // From ISAS
+    { name: "Generative AI APIs", icon: "✨" }, // Gemini/OpenAI
+    { name: "AI Agents", icon: "🤖" },
+    { name: "n8n", icon: "💻" }
   ],
   "Web Technologies": [
     { name: "React & Next.js", level: 90, icon: "⚛️" }, // Combined & Updated
@@ -39,15 +41,43 @@ export const skills = {
     { name: "Microservices", level: 80, icon: "🏗️" } // Architecture skill
   ],
   "DevOps & Tools": [ // RENAMED from "Database & Tools"
-    { name: "Docker", level: 80, icon: "🐳" }, // From DataVizor
-    { name: "PostgreSQL", level: 85, icon: "🐘" }, // Better than MySQL
-    { name: "Redis", level: 75, icon: "🔴" }, // From StockTok
-    { name: "Git & GitHub", level: 90, icon: "🐙" },
-    { name: "Azure / Cloud", level: 75, icon: "☁️" } // From Hackathon
+    { name: "Docker", icon: "🐳" }, // From DataVizor
+    { name: "PostgreSQL", icon: "🐘" }, // Better than MySQL
+    { name: "Git & GitHub", icon: "🐙" },
+    { name: "Azure / Cloud", icon: "☁️" } // From Hackathon
   ]
 };
 
 export const experiences = [
+  {
+    title: "Academic Lab Assistant (Computer Networking)",
+    organization: "University of Surrey",
+    period: "Jan 2026 - May 2026",
+    type: "work",
+    logo: "/images/university-of-surrey-logo.jpeg",
+    description: "Facilitating practical laboratory sessions and providing hands-on technical guidance for second-year undergraduates in Computer Networking.",
+    achievements: [
+      "Facilitated practical laboratory sessions for second-year undergraduates in the COM2022 module, providing hands-on technical guidance regarding network architectures, protocols, and infrastructure configurations.",
+      "Troubleshot and debugged complex student network implementations in real-time, demonstrating the ability to rapidly diagnose technical issues and articulate clear, actionable solutions."
+    ],
+    skills: ["Computer Networking", "Troubleshooting", "Technical Communication", "Infrastructure Configuration", "Mentoring"]
+  },
+  {
+    title: "Campus Brand Ambassador",
+    organization: "BDO UK (Guildford, UK)",
+    period: "Jan 2026 - May 2026",
+    type: "leadership",
+    logo: "/images/bdo-logo.png",
+    description: "Executing a strategic on-campus marketing campaign to increase graduate applications for a top-tier accountancy and business advisory firm.",
+    achievements: [
+      "Selected to represent BDO, executing a strategic on-campus marketing campaign to increase graduate applications.",
+      "Leveraged my position as Vice President of the CS Society to specifically target STEM students, bridging the gap between technical talent and advisory roles.",
+      "Delivered public presentations (lecture shout-outs) to large audiences and organised 'meet and greet' events to promote the firm's culture and opportunities.",
+      "Reported weekly to Sanctuary Graduates management, providing data-driven feedback on student sentiment and campaign reach."
+    ],
+    skills: ["Public Speaking", "Strategic Marketing", "Data Analysis", "Event Organization", "Leadership"]
+  },
+
   {
     title: "Head of Course Representatives",
     organization: "University of Surrey Students' Union",
@@ -111,7 +141,55 @@ export const experiences = [
 ];
 
 export const projects = [
+
   {
+    title: "Intelligent Supervisor Allocation System - A Hybrid Semantic & Stable Matching Approach",
+    subtitle: "Final Year Project",
+    period: "2026",
+    description: "Architected and deployed a decoupled full-stack web application designed to solve the computationally complex Student-Project Allocation (SPA) problem. The system integrates a Sentence-BERT (SBERT) neural network for semantic NLP with an adapted Gale-Shapley algorithm to ensure mathematically stable, student-optimal matching. The architecture actively mitigates algorithm aversion by preserving user sovereignty and significantly reduces departmental administrative overhead.",
+    achievements: [
+      "Engineered a Python Hybrid Scoring Engine utilising a Sentence-BERT neural network for semantic text evaluation, boosting matching accuracy by 50.2% via custom data-fallback mechanisms.",
+      "Implemented an adapted Gale-Shapley algorithm to optimise complex resource allocation, computing a mathematically stable matching for a 400-user market in 1.33 milliseconds (a 22x speed increase).",
+      "Architected a decoupled React and Django REST application, enforcing strict JSON Web Token (JWT) authentication to guarantee GDPR-compliant Role-Based Access Control."
+    ],
+    technologies: ["Python", "Django (DRF)", "React", "Sentence-BERT", "Pandas", "Scikit-learn"],
+    links: {
+      github: "https://github.com/SaidAit01/YOUR-REPO-NAME", // Remember to update this!
+      demo: "" 
+    }
+  },
+
+  {
+    title: "Predictive Analytics for Marine Ecology",
+    subtitle: "University Project",
+    period: "2026",
+    description: "Developed a supervised machine learning pipeline to forecast the recovery trajectories of Pacific coral reef fish populations following severe thermal bleaching events. The project evaluated multiple predictive algorithms against a highly imbalanced environmental dataset to design a data-driven 2026 rotational fishing schedule, successfully balancing marine conservation efforts with the economic sustainability of local fisheries.",
+    achievements: [
+      "Engineered and benchmarked predictive models (K-Nearest Neighbours and Random Forest) using Python and Scikit-learn, implementing SMOTE and rigorous feature scaling to resolve severe minority-class imbalance across 97,000+ marine spatial records.",
+      "Optimised model performance for deployment by executing 3-fold cross-validated GridSearchCV and custom probability threshold calibration (0.47), maximising minority-class sensitivity to achieve a peak recall of 75% and a leading group F1-score of 0.3158.",
+      "Translated complex statistical outputs into actionable business strategy by generating a tiered fishery management schedule and extracting feature importance metrics to prove that immediate thermal stress and turbidity are the primary drivers of reef viability."
+    ],
+    technologies: ["Python", "Scikit-learn", "Random Forest", "KNN", "SMOTE", "Data Analytics"],
+  },
+
+  {
+    title: "Multi-Agent School System",
+    subtitle: "Google ADK DevCamp Project",
+    period: "2026",
+    description: "Architected a hierarchical Agent-to-Agent (A2A) framework using the Google Agent Development Kit. Deployed a Root Agent to intelligently classify and route user queries to domain-specific sub-agents, directly mirroring enterprise-grade AI agent workflows with persistent memory and tool-use.",
+    achievements: [
+      "Architected a hierarchical Agent-to-Agent (A2A) framework using the Google Agent Development Kit, deploying a Root Agent to intelligently classify and route user queries to domain-specific sub-agents.",
+      "Engineered dynamic tool-use capabilities, integrating external tools (search and calculation) to allow sub-agents to retrieve real-time data and execute complex, multi-step reasoning tasks.",
+      "Implemented persistent conversation memory to maintain state and context across multi-turn interactions, directly mirroring enterprise-grade AI agent workflows."
+    ],
+    technologies: ["Google ADK", "Multi-Agent Systems (A2A)", "LLMs", "Python", "API Integration"],
+    links: {
+      github: "https://github.com/SaidAit01/SchoolMulti-AgentSystem", 
+      demo: "" 
+    }
+  },
+
+    {
     title: "Metaheuristic Hyperparameter Optimisation for LoRA",
     subtitle: "Computational Intelligence Project",
     period: "2025",
@@ -127,6 +205,7 @@ export const projects = [
       github: "https://github.com/SaidAit01/COM3013-LoRA-Optimisation"
     }
   },
+
 
   {
   title: "StockTok: Microservices-Based Social Trading Platform",
@@ -157,7 +236,7 @@ export const projects = [
 },
 {
     title: "DataVizor",
-    subtitle: "AI-Powered Privacy Policy Analyzer",
+    subtitle: "AI-Powered Privacy Policy Analyser",
     period: "2025", 
     type: "web-app",
     description: "Full-stack web application that analyzes and summarizes privacy policies in real-time using Gemini AI API.",
@@ -229,23 +308,7 @@ export const projects = [
       github: "https://github.com/SaidAit01/Album-Music-Manager"
     }
   },
-  {
-    title: "Intelligent Supervisor Allocation System (ISAS)",
-    subtitle: "Final Year Project",
-    period: "In Progress - 2026",
-    type: "Full-Stack AI Application",
-    description: "A full-stack, AI-powered allocation system designed to automate and optimize the complex process of matching students with supervisors based on research interests and capacity constraints.",
-    achievements: [
-      "Architected a scalable full-stack solution using Django (DRF) and React to replace manual allocation processes.",
-      "Designed a novel hybrid recommendation engine combining Sentence-BERT for semantic text analysis with explicit user preferences via a tunable weighted model.",
-      "Engineered a capacity-constrained assignment algorithm and benchmarked its performance on a synthetic dataset to scientifically evaluate and tune model weights."
-    ],
-    technologies: ["Python", "Django (DRF)", "React", "Sentence-BERT", "Pandas", "Scikit-learn"],
-    links: {
-      github: "" // Don't forget to update this link!
-    }
-  },
-  
+
 ];
 
 export default {
@@ -254,3 +317,5 @@ export default {
   experiences,
   projects
 };
+
+

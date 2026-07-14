@@ -40,6 +40,7 @@ const Home = () => {
               >
                 Ait Ennecer
               </motion.h2>
+              
             </motion.div>
 
             <motion.div
@@ -108,6 +109,24 @@ const Home = () => {
                 <ChevronDown size={32} />
               </motion.button>
             </motion.div>
+            <motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.8 }}
+  className="flex flex-wrap justify-center items-center gap-6 mb-12"
+>
+
+  {/* NEW: Download CV Button */}
+  <motion.a
+    href="/Said_Ait_Ennecer_CV.pdf"
+    download="Said_Ait_Ennecer_CV.pdf"
+    className="px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-600 text-slate-900 font-bold rounded-full hover:from-amber-500 hover:to-amber-700 transition-all duration-300 shadow-lg shadow-amber-400/20"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    Download CV
+  </motion.a>
+</motion.div>
           </div>
         </div>
       </div>

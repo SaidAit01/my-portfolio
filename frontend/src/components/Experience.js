@@ -19,9 +19,9 @@ const Experience = () => {
     internship: Award,
     hackathon: Users,
     work: Briefcase,
+    education: GraduationCap, 
     default: Briefcase
   };
-
   const getColor = (type) => {
     switch(type) {
       case 'leadership': return "from-amber-400 to-amber-600";
