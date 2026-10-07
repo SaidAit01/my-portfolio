@@ -5,8 +5,8 @@ import FloatingIcons from "./FloatingIcons";
 
 const Home = () => {
   const scrollToAbout = () => {
-    document.getElementById('about-section').scrollIntoView({ 
-      behavior: 'smooth' 
+    document.getElementById('about-section').scrollIntoView({
+      behavior: 'smooth'
     });
   };
 
@@ -15,7 +15,7 @@ const Home = () => {
       {/* Hero Section */}
       <div className="min-h-screen relative overflow-hidden">
         <FloatingIcons />
-        
+
         <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
           <div className="text-center max-w-4xl mx-auto">
             <motion.div
@@ -24,7 +24,7 @@ const Home = () => {
               transition={{ duration: 0.8 }}
               className="mb-8"
             >
-              <motion.h1 
+              <motion.h1
                 className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-transparent"
                 initial={{ scale: 0.5 }}
                 animate={{ scale: 1 }}
@@ -32,7 +32,7 @@ const Home = () => {
               >
                 Hi, I'm Said
               </motion.h1>
-              <motion.h2 
+              <motion.h2
                 className="text-2xl md:text-4xl text-gray-300 mb-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -40,7 +40,7 @@ const Home = () => {
               >
                 Ait Ennecer
               </motion.h2>
-              
+
             </motion.div>
 
             <motion.div
@@ -53,7 +53,7 @@ const Home = () => {
                 Software Engineer & AI Enthusiast
               </p>
               <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                Passionate about building innovative software solutions and exploring the latest in AI. 
+                Passionate about building innovative software solutions and exploring the latest in AI.
                 Currently studying Computing & Information Technology at the University of Surrey.
               </p>
             </motion.div>
@@ -110,23 +110,23 @@ const Home = () => {
               </motion.button>
             </motion.div>
             <motion.div
-  initial={{ opacity: 0, y: 30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, delay: 0.8 }}
-  className="flex flex-wrap justify-center items-center gap-6 mb-12"
->
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-wrap justify-center items-center gap-6 mb-12"
+            >
 
-  {/* NEW: Download CV Button */}
-  <motion.a
-    href="/Said_Ait_Ennecer_CV.pdf"
-    download="Said_Ait_Ennecer_CV.pdf"
-    className="px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-600 text-slate-900 font-bold rounded-full hover:from-amber-500 hover:to-amber-700 transition-all duration-300 shadow-lg shadow-amber-400/20"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    Download CV
-  </motion.a>
-</motion.div>
+              {/* NEW: Download CV Button */}
+              <motion.a
+                href="/Said_Ait_Ennecer_CV.pdf"
+                download="Said_Ait_Ennecer_CV.pdf"
+                className="px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-600 text-slate-900 font-bold rounded-full hover:from-amber-500 hover:to-amber-700 transition-all duration-300 shadow-lg shadow-amber-400/20"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Download CV
+              </motion.a>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -161,8 +161,8 @@ const Home = () => {
               <div className="relative">
                 <div className="w-80 h-80 bg-gradient-to-br from-amber-400/20 to-amber-600/20 rounded-2xl border border-amber-400/30 overflow-hidden">
                   {/* Replace with your actual image */}
-                  <img 
-                    src="/images/said-photo.jpg" 
+                  <img
+                    src="/images/said-photo.jpg"
                     alt="Said Ait Ennecer"
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -171,7 +171,7 @@ const Home = () => {
                       e.target.nextSibling.style.display = 'flex';
                     }}
                   />
-                  <div className="w-full h-full flex items-center justify-center" style={{display: 'none'}}>
+                  <div className="w-full h-full flex items-center justify-center" style={{ display: 'none' }}>
                     <User size={120} className="text-amber-400/50" />
                   </div>
                 </div>
@@ -195,11 +195,11 @@ const Home = () => {
                   My Journey
                 </h3>
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  As a Computing & Information Technology student at the University of Surrey, I've dedicated myself to 
-                  mastering both technical skills and leadership qualities. My journey spans from leading student 
+                  As a Computing & Information Technology student at the University of Surrey, I've dedicated myself to
+                  mastering both technical skills and leadership qualities. My journey spans from leading student
                   representatives to competing in prestigious hackathons.
                 </p>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-amber-400 rounded-full mt-2"></div>
@@ -208,7 +208,7 @@ const Home = () => {
                       <p className="text-gray-400 text-sm">Head of Course Representatives, managing 30+ representatives for 1,200+ students</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-amber-400 rounded-full mt-2"></div>
                     <div>
@@ -216,7 +216,7 @@ const Home = () => {
                       <p className="text-gray-400 text-sm">4th place in Microsoft Hackathon with AI-powered e-learning platform</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-amber-400 rounded-full mt-2"></div>
                     <div>

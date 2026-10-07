@@ -5,7 +5,7 @@ import { User, Briefcase, Mail } from "lucide-react";
 
 const DigitalCard = () => {
     // Replace this with your actual Vercel URL
-    const portfolioUrl = "https://your-custom-vercel-link.vercel.app";
+    const portfolioUrl = "https://said-portfolio-2026.vercel.app/.vercel.app";
 
     return (
         <div className="min-h-screen bg-slate-950 flex items-center justify-center px-4">
