@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import Navigation from "./components/Navigation";
 import Resume from "./components/Resume";
 import Education from "./components/Education";
+import DigitalCard from './components/DigitalCard'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/education" element={<Education />} />
+          <Route path="/qr" element={<DigitalCard />} />
         </Routes>
       </BrowserRouter>
     </div>

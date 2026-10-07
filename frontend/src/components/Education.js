@@ -1,19 +1,51 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  GraduationCap, 
-  Award, 
-  BookOpen, 
-  Briefcase, 
-  Code, 
-  Database, 
-  Brain, 
-  Shield, 
+import {
+  GraduationCap,
+  Award,
+  BookOpen,
+  Briefcase,
+  Code,
+  Database,
+  Brain,
+  Shield,
   Server,
-  LineChart
+  LineChart,
+  Cpu,
+  Bot,
+  Sparkles
 } from "lucide-react";
 
 const Education = () => {
+  // MSc Artificial Intelligence Modules (University of Southampton)
+  const mscModules = [
+    {
+      title: "Intelligent Agents & Multi-Agent Systems",
+      icon: Bot,
+      tech: ["Python", "Multi-Agent Architectures", "Game Theory", "Distributed AI"],
+      description: "Designed autonomous agent frameworks, multi-agent coordination protocols, and decision-making systems under uncertainty."
+    },
+    {
+      title: "Machine Learning Technologies",
+      icon: Brain,
+      tech: ["Python", "PyTorch", "scikit-learn", "Statistical Learning"],
+      description: "Implemented supervised and unsupervised pipelines, model evaluation metrics, dimensionality reduction, and advanced statistical learning."
+    },
+    {
+      title: "Deep Learning & Neural Architectures",
+      icon: Cpu,
+      tech: ["PyTorch", "Transformers", "CNNs", "Optimization"],
+      description: "Trained deep neural networks, backpropagation optimization, attention mechanisms, and computer vision / sequential models."
+    },
+    {
+      title: "Foundations of Artificial Intelligence",
+      icon: Sparkles,
+      tech: ["State-Space Search", "Heuristics", "Constraint Satisfaction", "Logic"],
+      description: "Formulated symbolic reasoning, heuristic search algorithms, automated planning, and probabilistic reasoning models."
+    }
+  ];
+
+  // BSc Computing & Information Technology Modules (University of Surrey)
   const technicalModules = [
     {
       title: "Internet Scale Systems",
@@ -97,32 +129,66 @@ const Education = () => {
   return (
     <div className="min-h-screen pt-24 pb-12 px-4 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       <div className="max-w-6xl mx-auto">
-        
-        {/* Header Section */}
+
+        {/* Degrees Side-by-Side Section */}
         <motion.div
-          initial={{ opacity: 0, y: -50 }}
+          initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-8">
             <div className="p-4 bg-amber-400/20 rounded-full border border-amber-400/30">
               <GraduationCap size={48} className="text-amber-400" />
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-transparent">
-            University of Surrey
-          </h1>
-          <h2 className="text-2xl text-white font-semibold mb-4">
-            BSc Computing & Information Technology
-          </h2>
-          <div className="inline-flex items-center gap-2 px-6 py-2 bg-amber-400/10 border border-amber-400/30 rounded-full text-amber-400 font-bold tracking-wide">
-            <Award size={20} />
-            First Class Honours (1st)
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Master's Degree Card */}
+            <div className="bg-slate-800/50 backdrop-blur-lg border border-amber-400/40 rounded-2xl p-8 text-center flex flex-col justify-between shadow-lg shadow-amber-400/5">
+              <div>
+                <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-transparent">
+                  University of Southampton
+                </h1>
+                <h2 className="text-xl text-white font-semibold mb-4">
+                  MSc Artificial Intelligence
+                </h2>
+                <p className="text-gray-400 text-sm mb-6">
+                  Specialized postgraduate study covering intelligent agents, deep learning architectures, and modern autonomous systems.
+                </p>
+              </div>
+              <div>
+                <div className="inline-flex items-center gap-2 px-6 py-2 bg-amber-400/10 border border-amber-400/30 rounded-full text-amber-400 font-bold tracking-wide text-sm">
+                  <Award size={18} />
+                  Postgraduate Degree
+                </div>
+              </div>
+            </div>
+
+            {/* Bachelor's Degree Card */}
+            <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 hover:border-amber-400/40 rounded-2xl p-8 text-center flex flex-col justify-between transition-all duration-300">
+              <div>
+                <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-transparent">
+                  University of Surrey
+                </h1>
+                <h2 className="text-xl text-white font-semibold mb-4">
+                  BSc Computing & Information Technology
+                </h2>
+                <p className="text-gray-400 text-sm mb-6">
+                  Comprehensive undergraduate foundation spanning software engineering, distributed systems, and security management.
+                </p>
+              </div>
+              <div>
+                <div className="inline-flex items-center gap-2 px-6 py-2 bg-amber-400/10 border border-amber-400/30 rounded-full text-amber-400 font-bold tracking-wide text-sm">
+                  <Award size={18} />
+                  First Class Honours (1st)
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
 
-        {/* Technical Modules Grid */}
+        {/* MSc AI Modules Grid (Southampton) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -130,8 +196,52 @@ const Education = () => {
           className="mb-16"
         >
           <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-3 border-b border-slate-800 pb-4">
-            <Code className="text-amber-400" /> 
-            Core Technical Modules
+            <Brain className="text-amber-400" />
+            MSc Artificial Intelligence Modules (Southampton)
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {mscModules.map((mod, index) => {
+              const Icon = mod.icon;
+              return (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-300"
+                >
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="p-3 bg-slate-900 rounded-lg text-amber-400">
+                      <Icon size={24} />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-white mb-2">{mod.title}</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {mod.tech.map((t, i) => (
+                          <span key={i} className="px-2 py-1 bg-amber-400/10 text-amber-400 text-xs rounded border border-amber-400/20">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {mod.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* BSc Technical Modules Grid (Surrey) */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="mb-16"
+        >
+          <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-3 border-b border-slate-800 pb-4">
+            <Code className="text-amber-400" />
+            BSc Technical Modules (Surrey)
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             {technicalModules.map((mod, index) => {
@@ -174,7 +284,7 @@ const Education = () => {
           viewport={{ once: true }}
         >
           <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-3 border-b border-slate-800 pb-4">
-            <Briefcase className="text-amber-400" /> 
+            <Briefcase className="text-amber-400" />
             Business & Management Modules
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
